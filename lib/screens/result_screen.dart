@@ -6,6 +6,7 @@ class ResultScreen extends StatelessWidget {
 
   ResultScreen({required this.questions, required this.userAnswers});
 
+  // Calculate the score based on correct answers
   int calculateScore() {
     int score = 0;
     for (int i = 0; i < questions.length; i++) {
@@ -33,21 +34,19 @@ class ResultScreen extends StatelessWidget {
         ),
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // Score container
               Container(
                 width: 350,
-                height: 750,
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color:
-                      const Color.fromARGB(255, 165, 205, 237).withOpacity(0.5),
+                  color: Colors.blueAccent.withOpacity(0.7),
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Colors.black12, width: 1),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.white,
-                      blurRadius: 20,
+                      color: Colors.black26,
+                      blurRadius: 8,
                       offset: Offset(2, 4),
                     ),
                   ],
@@ -55,47 +54,46 @@ class ResultScreen extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
+                    // Celebration Image
+                    Image.asset(
+                      'assets/images/celebrate.png',
                       height: 150,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/images/celebrate.png'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
                     ),
                     SizedBox(height: 20),
+                    // Congratulatory Message
                     Text(
                       'Good Job!',
                       style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 70,
+                        color: Colors.white,
+                        fontSize: 36,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     SizedBox(height: 10),
+                    // Display Score
                     Text(
                       'Your Score: $score/${questions.length}',
                       style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 40,
+                        color: Colors.white,
+                        fontSize: 20,
                       ),
-                    ),
-                    SizedBox(height: 40),
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                CorrectAnswersScreen(questions: questions),
-                          ),
-                        );
-                      },
-                      child: Text('See Correct Answers'),
                     ),
                   ],
                 ),
+              ),
+              SizedBox(height: 30),
+              // Button to navigate to CorrectAnswersScreen
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          CorrectAnswersScreen(questions: questions),
+                    ),
+                  );
+                },
+                child: Text('See Correct Answers'),
               ),
             ],
           ),

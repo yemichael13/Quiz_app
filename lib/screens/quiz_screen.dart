@@ -18,6 +18,22 @@ class _QuizScreenState extends State<QuizScreen> {
       'options': ['3', '4', '5', '6'],
       'answer': '4',
     },
+    {
+      'question': 'Which of the following is the largest Ocean?',
+      'options': ['Indian Ocean', 'Atlantic Ocean', 'Pacific Ocean', 'None'],
+      'answer': 'Pacific Ocean',
+    },
+    {
+      'question':
+          'Which of the following is known as both Country and Continent?',
+      'options': ['Africa', 'Europe', 'South America', 'Australia'],
+      'answer': 'Australia',
+    },
+    {
+      'question': 'Which one is the largest Continent in our planet?',
+      'options': ['Africa', 'Asia', 'North America', 'Antarctica'],
+      'answer': 'Asia',
+    }
   ];
 
   final Map<int, String> _userAnswers = {};
